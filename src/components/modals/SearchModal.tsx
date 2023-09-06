@@ -50,6 +50,7 @@ const ModalContainer = styled.div`
         width: 375px;
         height: 716px;
         padding: 16px;
+        top: -25%;
 
         .search {
             visibility: hidden;
