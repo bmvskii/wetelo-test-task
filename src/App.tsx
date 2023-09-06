@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { SearchModal } from './components/modals/SearchModal';
+import './styles/index.scss';
+import styled from 'styled-components';
+
+const TriggerButton = styled.button`
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: teal;
+  cursor: pointer;
+`;
 
 function App() {
+  const [isModalVisible, showModal] = useState(false);
+
+  const onShowHandler = () => showModal(true);
+
+  const onCloseHandler = () => showModal(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <TriggerButton onClick={onShowHandler}>Show Modal</TriggerButton>
+      {isModalVisible ? <SearchModal onClose={onCloseHandler} /> : null}
+    </main>
   );
 }
 
